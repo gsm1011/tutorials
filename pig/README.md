@@ -51,7 +51,31 @@ When we run `pig` script in `mapreduce` mode, the `pig` script will be parsed an
 Basic data operations using pig
 ===============================
 
-Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here]{https://www.kddcup2012.org/c/kddcup2012-track1/data?track1.7z#_=_}. 
+Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here]{https://www.kddcup2012.org/c/kddcup2012-track1}. 
 
 > In order to obtain the kddcup data, registration is required. 
+
+Filtering
+---------
+
+The `FILTER` operator can filter data with given conditions. For example, using our `rec_log_train.txt` dataset, we want to get all the records with the result as *accepted*, which means the column of `result` is *1*. We can do this with the following: 
+
+```
+inputData = load 'rec_log_train.txt' using PigStorage('\t') as (uid:chararray, itemid:chararray, result:int, timestamp:chararray);
+accepted = filter inputData by (result == 1);
+notaccepted = filter inputData by (result == -1);
+store accepted into 'accepted';
+store notaccepted into 'notaccepted';
+```
+
+We can run the script file in mapreduce mode using `pig`. Before doing that we need to make sure that the file `rec_log_train.txt` has been copyed from local to *HDFS*. 
+
+> hadoop fs -copyFromLocal rec_log_train.txt ./
+> pig -x mapreduce basic.pig
+
+It might take a few minutes for the job to finish. After the job is done, we can take a look at the result with `hadoop` commands. 
+
+> hadoop fs -ls accepted 
+
+Next, we want to some sorting based on user id (`uid`) of the data set. 
 
