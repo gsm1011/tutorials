@@ -46,10 +46,16 @@ It is advisable to test the script locally on small input data first before runn
 
 When we run `pig` script in `mapreduce` mode, the `pig` script will be parsed and translated into MapReduce job (**DAG**) and submitted to the hadoop cluster. 
 
+We can also run the `pig` script from the `grunt` prompt with the following: 
+
+> grunt> exec -param input=<normal_input.txt> wordcount.pig
+
+The `grunt` shell also has the capability to execute `hadoop fs` commands to operate the file system. For example, the `ls` command can list files/directories in `$CWD`. 
+
 Basic data operations using pig
 ===============================
 
-Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here]{https://www.kddcup2012.org/c/kddcup2012-track1}. 
+Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here](https://www.kddcup2012.org/c/kddcup2012-track1). 
 
 > In order to obtain the kddcup data, registration is required. 
 
