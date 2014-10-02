@@ -51,7 +51,7 @@ When we run `pig` script in `mapreduce` mode, the `pig` script will be parsed an
 Basic data operations using pig
 ===============================
 
-Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here]{https://www.kddcup2012.org/c/kddcup2012-track1}. 
+Pig can load different formats of data for processing. The most common format is column oriented files/tables. We will illustrate how to use `pig` to load data, clean/filter data and aggregate the data based on certain attributes. For purpose of illustration, we download the kddcup 2012 data set from [here](https://www.kddcup2012.org/c/kddcup2012-track1). 
 
 > In order to obtain the kddcup data, registration is required. 
 
