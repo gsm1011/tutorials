@@ -4,22 +4,20 @@ Install Pig
 - Download pig from the apache site
 - Decompress the tar file into a directory such as /usr/local. 
 - Create symbolic link for the folder with the `ln -s` command
-```
-  $ ln -s pig-x.y.z pig
-```
+
+> $ ln -s pig-x.y.z pig
+
 - Configure the environment variables for the pig folder by putting the following into your `~/.bash_profile` file
 ```
-  PIG_HOME=/usr/local/pig
-  PATH=$PATH:$PIG_HOME/bin
-  export PATH
+PIG_HOME=/usr/local/pig
+PATH=$PATH:$PIG_HOME/bin
+export PATH
 ```
 - Pig will automatically identify your hadoop installation. The typical scenario is to install pig into a client/gateway machine which has hadoop client configured pointing to the correct *NameNode* and *Jobtracker*. 
 - Test your pig installation by running the Grunt command tool from command line. 
 
-```
-  $ pig 
-  grunt> 
-```
+> $ pig 
+> grunt> 
 
 Wordcount using pig
 ===================
@@ -40,11 +38,11 @@ dump cnts;
 
 Now we can run the `pig script` either in local mode or in distributed (MAPREDUCE) mode.
 
-`$ pig -x local -f wordcount.pig -param input=<small_input.txt>`
+> $ pig -x local -f wordcount.pig -param input=<small_input.txt>`
 
 It is advisable to test the script locally on small input data first before running over large dataset on the `HDFS/MAPREDUCE` mode.
 
-`$ pig -x mapreduce -f wordcount.pig -param input=<normal_input.txt>`
+> $ pig -x mapreduce -f wordcount.pig -param input=<normal_input.txt>`
 
 When we run `pig` script in `mapreduce` mode, the `pig` script will be parsed and translated into MapReduce job (**DAG**) and submitted to the hadoop cluster. 
 
