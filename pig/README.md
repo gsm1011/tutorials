@@ -83,3 +83,35 @@ It might take a few minutes for the job to finish. After the job is done, we can
 
 Next, we want to some sorting based on user id (`uid`) of the data set. 
 
+
+Table Joins
+-----------
+
+Table join is one of the most popular data operations. Pig supports join operation with the `join` operator. In order to illustrate how it works, we want to join two data sets `user_profile` and `rec_log_train`. 
+
+```
+train = LOAD 'rec_log_train.txt.bz2' USING PigStorage('\t') AS (uid:chararray,iid:chararray,result:int,timestamp:chararray);
+profile = LOAD 'user_profile.txt.bz2' USING PigStorage('\t') AS (uid:chararray,yob:chararray,gender:int,numtweets:int,tagids:chararray);
+
+joined = JOIN train BY uid, profile BY uid;
+```
+
+Used compressed data
+--------------------
+
+As `pig` scripts will be translated into mapreduce jobs, it also inherits the capability of supporting splitable compressed formats such as `bzip2`. Using compressed data can on one hand save storage space on HDFS and on the other hand save network transfer bandwidth. We can directly provide the compressed file in `bz2` format, `pig` will automatically decompress the file on the fly. For example. 
+
+```bash
+$ bzip2 user_profile.txt 
+$ ls 
+user_profile.txt.bz2
+$ hadoop fs -put user_profile.txt.bz2
+$ pig -x mapreduce 
+grunt> profiles = LOAD 'user_profile.txt.bz2' USING PigStorage('\t') AS (uid:chararray,yob:chararray,gender:int,numtweets:int,tagids:chararray);
+grunt> uids = FOREACH profiles GENERATE uid; 
+grunt> STORE uids INTO 'uids'; 
+```
+
+We first compressed the txt file into `.bz2` format, and copy the file from local to *HDFS*. Then, we use `pig` in mapreduce mode to process the data. 
+
+From the grunt shell, we first load the data into a pig variable with defined schema. Then we get the *uid* of each record and store it into a file on *HDFS*. 
