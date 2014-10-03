@@ -3,12 +3,12 @@
 inputData = load 'rec_log_train.txt' using PigStorage('\t') as (uid:chararray, itemid:chararray, result:int, timestamp:chararray); 
 accepted = filter inputData by (result == 1); 
 notaccepted = filter inputData by (result == -1); 
-store accepted into 'accepted'; 
-store notaccepted into 'notaccepted'; 
+-- store accepted into 'accepted'; 
+-- store notaccepted into 'notaccepted'; 
 
 -- sorting based on uid. 
 accepted_sorted = ORDER accepted BY uid ASC PARALLEL 5; 
-STORE accepted_sorted INTO 'accepted_sorted'; 
+-- STORE accepted_sorted INTO 'accepted_sorted'; 
 
 -- table job with other data set. 
 -- load the user data. 
