@@ -115,3 +115,24 @@ grunt> STORE uids INTO 'uids';
 We first compressed the txt file into `.bz2` format, and copy the file from local to *HDFS*. Then, we use `pig` in mapreduce mode to process the data. 
 
 From the grunt shell, we first load the data into a pig variable with defined schema. Then we get the *uid* of each record and store it into a file on *HDFS*. 
+
+Pig UDFs
+========
+
+Basics
+------
+
+Evaluation and filtering functions using pig
+--------------------------------------------
+
+Writing pig load and store functions
+------------------------------------
+
+Using pig with python
+=====================
+
+Debugging and performance tuning of `pig latin` script
+======================================================
+
+Pig in the hadoop big data ecosystem
+====================================
