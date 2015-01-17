@@ -11,6 +11,7 @@ class JDBCtest {
 	ResultSet         rs = null;
 	ResultSetMetaData rmd = null;
 	String            query = null;
+	String hostPort = "107.170.110.131:3306"; 
    
 	try{
 	    Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -24,7 +25,7 @@ class JDBCtest {
 	}
   
 	try {
-	    conn = DriverManager.getConnection("jdbc:mysql://192.168.83.179:3306/sonar?user=sonar&password=sonar");
+	    conn = DriverManager.getConnection("jdbc:mysql://" + hostPort + "/sonar?user=sonar&password=sonar");
 	    System.out.println("Connection to MySQL Database Successful");
 	} catch (SQLException sqe1){
 	    System.out.println("Caught SQL Exception: " + sqe1);
