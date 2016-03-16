@@ -8,6 +8,7 @@ lazy val root = (project in file(".")).
 )
 
 // credentials += Credentials("Sonatype Nexus Repository Manager", "nexus.scala-tools.org", "admin", "admin123")
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+// credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+credentials += Credentials(File("/var/lib/jenkins/.ivy2/.credentials"))
 // publishTo := Some("Sonatype Snapshots Nexus" at "http://localhost:8081/nexus/content/repositories/snapshots/")
 publishTo := Some("Sonatype Snapshots Nexus" at "https://nexus-886161195.us-east-1.elb.amazonaws.com/nexus/content/repositories/snapshots/")
