@@ -1,4 +1,4 @@
-# Getting started with logstash + elasticsearch + kibana (ELK)
+# Introduction
 
 The ELK stack is a powerful tool chain for collecting and visualizing logs
 and various kinds of data sets. Once configured, the full stack will run
@@ -46,3 +46,83 @@ in the index store.
 
 Kibana is the visualization layer for the ELK stack, it takes the query
 result from elastic search and visualizes the result data into graphs. 
+
+# Getting started tutorial
+
+This section shows how to get started with ELK on Mac OSX environment, if
+you are using a different environment, please refer to related documents. 
+
+## Installation 
+
+Installation is very simple with homebrew. 
+
+``` bash 
+	$ brew install logstash 
+	$ brew install elasticsearch
+	$ brew install kibana 
+```
+
+or, you can use a more concise command 
+
+``` bash 
+	$ brew install elasticsearch logstash kibana 
+``` 
+
+> The configuration files for the ELK stack will be located at
+> `/usr/local/etc` directory just in case you need to modify some
+> configurations. 
+
+## Creating a schema template for elasticsearch 
+
+The schema template is a json format file, specifying fields and their data
+types etc. An example ES template is similar to the following
+
+``` json 
+
+{
+	"template": "sample-es-template",
+	"mappings": {
+		"sample-es-type": {
+			"dynamic": "strict", 
+			"properties": {
+				"NAME": {
+					"type": "string"
+				}
+				"AGE": {
+					"type": "int"
+				}
+				"WEIGHT": {
+					"type": "double"
+				}
+			}
+		}
+	}
+}
+
+```
+
+Once the schema template is generated, we need to ingest the template file
+into elasticsearch. This can be done with the following command: 
+
+``` bash 
+	$ curl -X PUT localhost:9200/_template/analytics-model -d@es.template.json
+```
+
+Once ingested, we can verify the template on elasticsearch using the
+following curl HTTP request. 
+
+``` bash 
+	$ curl -X GET localhost:9200/_template/
+``` 
+
+## Creating a a config file for logstash 
+
+Corresponding to the input and the elasticsearch schema template, we should
+configure the logstash configuration file accordingly. 
+
+> Once the logstash config file and the elasticsearch schema template are
+> created, we can now start both services. 
+
+## Using Kibana to visualize the query results
+
+
