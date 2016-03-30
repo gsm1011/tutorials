@@ -125,4 +125,16 @@ configure the logstash configuration file accordingly.
 
 ## Using Kibana to visualize the query results
 
+After `kibana` is started, it will be able to connect to the local elastic
+search instance automatically. If you want to connect to a remote ES
+instance, you need to modify the kibana configuration file located at
+`/usr/local/etc/kibana/kibana.yml`. 
 
+Once `kibana` is started with the default settings, we can access the web
+interface using `http://localhost:5601/`. 
+
+From the web interface, you can query, visualize and create dashboard from
+the visualizations. 
+
+> By default, kibana might not be able to find your index, you need to
+> create one manually from the settings -> indices -> create index. 
