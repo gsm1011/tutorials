@@ -1,4 +1,4 @@
-# Getting started with logstash + elasticsearch + kibana
+# Getting started with logstash + elasticsearch + kibana (ELK)
 
 The ELK stack is a powerful tool chain for collecting and visualizing logs
 and various kinds of data sets. Once configured, the full stack will run
