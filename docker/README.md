@@ -20,6 +20,8 @@ with the `docker build .` coammand in the directory of this `README.md`
 file .
 
 ``` bash
+$ docker-machine create --driver virtualbox default
+$ docker-machine start default
 $ eval $(docker-machine env default)
 $ docker build .
 $ docker images
