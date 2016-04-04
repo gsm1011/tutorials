@@ -19,25 +19,27 @@
 	<div>
 	    <h2>Directives</h2>
 	    <%= (new java.util.Date()).toLocaleString() %>
-	    <!-- <%@ directive attribute="value" %> -->
+	    <%-- directive attribute="value" --%>
 	</div>	
 
 	<div>
 	    <h2>Actions</h2>
 	    Action elements are predefined functions following the jsp functions. 
-	    <jsp:action_name attribute="value" />
+	    <%-- jsp:action_name attribute="value" --%>
 	</div>	
 
-	<Div>
+	<div>
 	    <h2>Others</h2>
 	    <%-- This is some JSP comments. --%>
-	    <%
-	    out.println("Your IP address is: " + request.getRemoteAddr());
-	    for(int j = 0; j <= i; j++) {
-		out.println(j);
-		out.println("</br>");
-	    }
-	    %>
+	    <table>
+		<%! int j = 0; %> 
+		<% for(j = 0; j <= i; j++) { %>
+		    <tr>
+			<td><%= j %></td>
+			<td><%= j % 2 == 0 %></td>
+		    </tr>
+		<% } %>
+	    </table>
 	</div>
     </body>
 </html>
