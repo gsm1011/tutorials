@@ -138,3 +138,12 @@ the visualizations.
 
 > By default, kibana might not be able to find your index, you need to
 > create one manually from the settings -> indices -> create index. 
+
+# References
+
+- [ELK pipeline](https://www.elastic.co/guide/en/logstash/current/advanced-pipeline.html)
+- [Logstash json filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-json.html)
+- [Logstash mutate filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html#plugins-filters-mutate-gsub)
+- [Logstash handling multiline input](http://stackoverflow.com/questions/31713531/logstash-parse-complicated-multiline-json-from-log-file-into-elasticsearch)
+- [Elasticsearch search API](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/_the_search_api.html#_the_search_api)
+- [Logstash split](http://logstash.es/2015/12/10/advent-day-10/)
