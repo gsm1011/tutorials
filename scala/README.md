@@ -17,3 +17,4 @@ $ ......
 # References
 
 - [Scalatest](http://www.scalatest.org/user_guide/selecting_a_style)
+- [IntelliJ with scala](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-scala-application.html?origin=old_help)
