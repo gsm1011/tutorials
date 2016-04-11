@@ -21,6 +21,13 @@ class First
   def getCount
     puts "Total objects for the class is: #@@class_variable."
   end
+
+  def getTypes
+    print "@a is:", defined? @a
+    puts
+    print "$global_var is ", defined? $global_var
+    puts
+  end
 end
 
 obj = First.new(1,2,3)
@@ -29,3 +36,4 @@ obj.printAll
 obj1.printAll
 puts "global variable now is: #$global_var."
 obj.getCount
+obj.getTypes
