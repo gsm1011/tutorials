@@ -1,0 +1,21 @@
+[user]
+        name = Shumin Guo
+        email = shumin.guo@experian.com
+[core]
+        editor = emacs
+	pager = less -r
+
+[Alias]
+     lg = log --color --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short --decorate
+     hist = log --color --graph --full-history --all --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
+     ci = commit
+     co = checkout
+     st = status
+     stat = status
+     br = branch
+     wdiff = diff --color-words
+     lol = log --graph --decorate --pretty=oneline --abbrev-commit
+[color]
+	ui = true
+[url "https://github.com/"]
+	insteadOf = git://github.com/
