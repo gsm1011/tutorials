@@ -3,6 +3,15 @@
 Docker provides a solutions to continuously deploy production code in a
 controlled environment.
 
+# Prerequisites
+
+The following prerequisites must be met before installing docker. 
+
+- 64-bit arch
+- Linux kernel >= 3.8
+- Have support of storage manager, including device mapper, aufs, vfs, btrfs
+- `cgroups` and `namespace` kernel features should be supported. 
+
 # Environment configuration
 
 The following items need to be installed before using docker.
