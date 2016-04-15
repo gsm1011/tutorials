@@ -18,7 +18,12 @@ MongoClient.connect(url, function(err, db) {
     // delete doc.
     removeDoc(db, function(result) {
 	console.log(result); 
-	db.close(); 
+    });
+
+    // find all docs.
+    findAllDoc(db, function(docs) {
+	console.log(docs);
+	db.close();
     });
     
 }); 
@@ -56,5 +61,19 @@ var removeDoc = function (db, callback) {
 	assert.equal(1, result.result.n);
 	console.log("Removed doc with field id a = 3.");
 	callback(result);
+    }); 
+}
+
+// find all.
+var findAllDoc = function (db, callback) {
+    var collection = db.collection('documents');
+
+    collection.find({}).toArray(function (err, docs) {
+	assert.equal(err, null);
+	assert.equal(2, docs.length);
+	console.log("Found the following records.");
+
+	console.dir(docs);
+	callback(docs);
     }); 
 }
