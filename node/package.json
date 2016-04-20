@@ -1,0 +1,10 @@
+{
+    "name": "node-restful",
+    "main": "server.js",
+    "dependencies": {
+	"express": "latest",
+	"body-parser": "latest",
+	"aws-sdk": "latest",
+	"morgan": "latest"
+    }
+}
