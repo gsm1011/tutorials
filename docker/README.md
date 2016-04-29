@@ -47,5 +47,28 @@ given `Dockerfile` configuration. Now we can test drive the docker image
 with command :
 
 ``` bash
-$ docker run -it awscli bash
+$ docker run -it awscli --name=aws bash
 ```
+
+If you want to save the changes to the images, you can do a `docker commit`
+after stopping the container instance.
+
+``` bash
+$ docker commit aws_img aws
+```
+
+# Docker networking
+
+There are 3 major ways for docker containers to connect to each other or to
+the host machine.
+
+- Use `--expose=<port>` when running the container, this will allow other
+  docker containers to access the `<port>` on this docker container
+  instance.
+
+- Use `-p <port2>:<port1>` to *bind* the port `port1` on the docker container to the
+  host machine on port `port2`.
+
+- Use `--link=<container_name>` to link one container to another
+  container. And in the *linked to* container, we will be able to access
+  the linked server using the `container_name`.
