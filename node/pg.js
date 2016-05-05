@@ -4,10 +4,10 @@ var fs = require('fs');
 var pg = require('pg');
 var conStr = 'postgresql://gshum:abc@localhost:5432/velocitysites';
 
-fs.readFileSync('./test.json', function (err, data) {
-    console.log(data);
-    console.log(err); 
-});
+// fs.readFile('./test.json', function (err, data) {
+//     console.log(data);
+//     console.log(err); 
+// });
 
 // Connect using connection pools.
 // pg.connect(conStr, function (err, client, done) {
@@ -30,18 +30,41 @@ fs.readFileSync('./test.json', function (err, data) {
 var client = new pg.Client(conStr);
 client.connect(); 
 
+//////////////////////////
+// querying the database./
+//////////////////////////
 var query = client.query('SELECT * FROM velocity_boundary;');
 query.on('row', function (row) {
     console.log(row); 
 });
 
-query.on('end', function () {
-    client.end();
-    console.log('Client disconnected.'); 
+///////////////////////////////////////
+// read data and load to pg database.//
+///////////////////////////////////////
+var pfo = JSON.parse(fs.readFileSync('./test.json', 'utf8'));
+var features = pfo[0].features[0].properties;
+
+// fields used to update in the database. 
+var id = pfo[0].features[0].id; 
+var name = features.Name;
+var field = features.Field;
+var pipelinefn = features.PipeLineFn;
+var tags = features.Tags;
+var type = features.Type;
+var userid = features.UserId;
+
+var query = client.query('UPDATE velocity_boundary SET name = ($1), field=($2), pipelinefn=($3),tags=($4),userid=($5),kafka_msg=($6) WHERE id=($7)', [name, field, pipelinefn, tags, userid, JSON.stringify(pfo), id]);
+
+//////////////////////////////////
+// insert data into the database./
+//////////////////////////////////
+query = client.query({
+    name: 'insert query',
+    text: 'INSERT INTO velocity_boundary (id, name, field, userid) values ($1, $2, $3, $4)',
+    values: ['fid-0022123233', 'test-fid', 'ST LOUIS', 'simon']
 });
 
-// client.query({
-//     name: 'insert query',
-//     text: 'INSERT INTO velocity_boundary (id, name, field, userid) values ($1, $2, $3, $4)',
-//     values: ['fid-22123233', 'test-fid', 'ST LOUIS', 'simon']
-// });
+query.on('end', function () {
+    client.end(); 
+    console.log('Client disconnected.'); 
+});
