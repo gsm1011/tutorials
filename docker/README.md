@@ -72,3 +72,12 @@ the host machine.
 - Use `--link=<container_name>` to link one container to another
   container. And in the *linked to* container, we will be able to access
   the linked server using the `container_name`.
+
+# Docker storage
+
+There are multiple ways to persist data stored for docker instances. 
+
+- Use image itself, e.g. commit data as changes. 
+- Create dedicated data docker images. 
+- Mount storage from host machine.
+- Shared storage that is mapped from the host machine 
