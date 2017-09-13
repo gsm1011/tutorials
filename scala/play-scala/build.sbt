@@ -14,3 +14,7 @@ libraryDependencies ++= Seq(
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+assemblyMergeStrategy in assembly := {
+ case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+  }
