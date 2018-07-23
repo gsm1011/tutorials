@@ -7,7 +7,7 @@
         <span class="price">${{ product.price }}</span>
       </li>
     </ul>
-    <button v-on:click="reducePrice">Reduce Price</button>
+    <button v-on:click="reducePrice(0.5)">Reduce Price</button>
   </div>
 </template>
 
@@ -22,12 +22,13 @@ export default {
     }
   },
   methods:{
-    reducePrice: function () {
+    reducePrice: function (amount) {
       /*
       this.$store.state.products.map(product => {
         product.price -= 1;
       }); */
-      this.$store.commit('reducePrice');
+      // this.$store.commit('reducePrice');
+      this.$store.dispatch('reducePrice', amount);
     }
   }
 }
