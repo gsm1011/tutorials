@@ -12,24 +12,25 @@
 </template>
 
 <script>
+// need to configure babel to <transpiles></transpiles> the ES6 to js.
+// install babel-preset-stage-2.
+// configure file .babelrc with the following:
+//
+import {mapActions, mapGetters} from 'vuex';
+
 export default {
   computed: {
     products () {
       return this.$store.state.products;
     },
-    saleProducts () {
-      return this.$store.getters.saleProducts;
-    }
+    ...mapGetters([
+      'saleProducts'
+    ])
   },
   methods:{
-    reducePrice: function (amount) {
-      /*
-      this.$store.state.products.map(product => {
-        product.price -= 1;
-      }); */
-      // this.$store.commit('reducePrice');
-      this.$store.dispatch('reducePrice', amount);
-    }
+    ...mapActions([
+      'reducePrice'
+    ])
   }
 }
 
