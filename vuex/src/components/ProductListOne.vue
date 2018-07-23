@@ -4,9 +4,10 @@
     <ul>
       <li v-for="product in products">
         <span class="name">{{ product.name }}</span>
-        <span class="price">{{ product.price }}</span>
+        <span class="price">${{ product.price }}</span>
       </li>
     </ul>
+    <button v-on:click="reducePrice">Reduce Price</button>
   </div>
 </template>
 
@@ -15,6 +16,18 @@ export default {
   computed: {
     products () {
       return this.$store.state.products;
+    },
+    saleProducts () {
+      return this.$store.getters.saleProducts;
+    }
+  },
+  methods:{
+    reducePrice: function () {
+      /*
+      this.$store.state.products.map(product => {
+        product.price -= 1;
+      }); */
+      this.$store.commit('reducePrice');
     }
   }
 }
