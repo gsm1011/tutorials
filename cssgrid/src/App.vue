@@ -88,6 +88,10 @@ export default {
         link: '/grid2'
       }, {
         icon: 'phone',
+        title: 'Zhengdao',
+        link: '/zhengdao'
+      }, {
+        icon: 'phone',
         title: 'Table',
         link: '/grid3'
       }, {

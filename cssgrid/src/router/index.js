@@ -33,6 +33,11 @@ export default new Router({
       component: () => import('@/components/Grid3')
     },
     {
+      path: '/zhengdao',
+      name: 'Zhengdao',
+      component: () => import('@/components/Zhengdao')
+    },
+    {
       path: '/about',
       name: 'About',
       component: () => import('@/components/About')
