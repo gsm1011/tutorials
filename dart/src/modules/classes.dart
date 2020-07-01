@@ -20,7 +20,7 @@ class Circle implements Shape, Eraser {
 
 class TestClass {
   // fields
-  static var circle = new Circle();
+  static var circle = Circle();
   int f; 
 
   // getters and setters.

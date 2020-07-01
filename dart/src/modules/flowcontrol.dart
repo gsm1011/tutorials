@@ -18,6 +18,11 @@ class FlowControl {
       print(element);
     });
 
+    // using array map function.
+    var x = abc.map((e) => e + 10 );
+    print('Output of the map function:');
+    print(x);
+
     // using foreach to iterate over map.
     cde.forEach((key, value) {
       print('Data is: <${key}, ${value}>.');

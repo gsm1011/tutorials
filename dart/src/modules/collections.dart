@@ -6,11 +6,12 @@ class Collections {
     var l = [10, 20, 33, 56];
     print('The value of list is: ${l}');
 
-    List<int> ll = [1,2,23];
+    var ll = [1,2,23];
     // ll.add('value');// can't add as this list only hold integers.
+    ll.add(10);
 
     // set
-    var s = new Set();
+    var s = <int>{};
     s.add(10);
     s.add(20);
     s.forEach((element) {
@@ -26,7 +27,7 @@ class Collections {
     });
 
     // queue
-    var q = new Queue();
+    var q = Queue();
     q.addAll([10, 20, 30]);
     print('The value of queue is: ${q}');
     // using iterator.
