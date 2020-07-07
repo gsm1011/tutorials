@@ -5,9 +5,9 @@ The builder design pattern in java.
 # Description
 
 You order a meal that contains a burger and drink.  
-- Burger can be vegitible or chicken.
+- Burger can be vegetable or chicken.
 - Drink can be coke or pepsi.
-- Burger and drink have name, price and packing.
+- Burger and drink have a name, price and packing.
 
 # UML
 
